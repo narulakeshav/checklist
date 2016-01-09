@@ -130,5 +130,4 @@ $(document).ready(function() {
             markDoneText.textContent = "Mark All as Not Done";
         }
     }
-
 });
