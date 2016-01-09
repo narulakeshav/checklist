@@ -23,6 +23,7 @@ $(document).ready(function() {
         if(event.keyCode == 13){
             event.preventDefault();
             $("#btn-add").click();
+            input.value = "";
         }
     });
 
