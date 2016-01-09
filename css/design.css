@@ -150,6 +150,9 @@ ul li {
 
 /* MAKING IT RESPONSIVE */
 @media (max-width: 768px) {
+    body {
+        padding-top: 10%;
+    }
     .card-header {
         padding: 10px;
         padding-bottom: 15px;
@@ -159,5 +162,8 @@ ul li {
     }
     .mark-done {
         padding-bottom: 6px;
+    }
+    ul li {
+        padding: 16px 10px 16px 0px;
     }
 } 
