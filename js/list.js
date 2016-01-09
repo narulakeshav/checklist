@@ -1,11 +1,11 @@
 // FUNCTION THAT CHECKS WHICH WHICH MARK-DONE BUTTON WAS CLICKED
 function completeTask(id) {
+    "use strict";
     var clickedButton = document.getElementById(id);
     $(clickedButton).parent("li").toggleClass("strike");
 }
 
 $(document).ready(function() {
- 
     // INTIALIZING WOWJS
     new WOW().init();
 
@@ -13,11 +13,13 @@ $(document).ready(function() {
     $("#message").hide();
 
     // GETS ELEMENT'S REFERENCES FROM HTML DOCUMENT
+    "use strict";
     var addButton = document.getElementById("btn-add");
     var input = document.getElementById("input");
     var ul = document.getElementById("list");
     var clearCompletedTasks = document.getElementById("btn-clear-task");
     var markAllDone = document.getElementById("btn-mark-done");
+    var markDoneText = document.getElementById("mark-all");
 
     // FOCUSING ON THE INPUT WHEN PAGE LOADS
     input.focus();
@@ -49,7 +51,7 @@ $(document).ready(function() {
     // WHEN ADD BUTTON IS CLICKED
     addButton.onclick = function() {
         //CHECKS IF INPUT IS BLANK, SHOW AN ALERT (FOR NOW)
-        if(input.value === "") alert("Please enter some task.");
+        if(input.value === "") { alert("Please enter some task."); }
         else {
             // CHECKS IF IT'S FIRST TIME ENTERING SOMETHING
             isFirstTime();
