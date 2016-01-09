@@ -98,7 +98,9 @@ $(document).ready(function() {
         }
         else {
             $(".strike").remove();
-            if($("#list li").length === 0) $("#message").show();
+            if($("#list li").length === 0) {
+                $("#message").show();
+            }
             else $("#message").hide();
         }
     }
