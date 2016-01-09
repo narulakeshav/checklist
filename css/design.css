@@ -75,7 +75,7 @@ input[type="checkbox"] {
 }
 ul li {
     margin-left: -20px;
-    padding: 16px 20px 16px 0px;
+    padding: 16px 15px 16px 0px;
     list-style-type: none;
     color: #555;
     font-size: 15px;
@@ -88,7 +88,8 @@ ul li {
     background: #5499DE;
     color: #FFF;
 }
-.mark-done {
+.mark-done,
+.mark-done:focus {
     margin: 2px 15px 2px 10px;
     line-height: 15px;
     padding-top: 4px;
@@ -157,6 +158,6 @@ ul li {
         width: 70%;
     }
     .mark-done {
-        padding-bottom: 5px;
+        padding-bottom: 8px;
     }
 } 
