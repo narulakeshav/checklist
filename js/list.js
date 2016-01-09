@@ -106,8 +106,26 @@ $(document).ready(function() {
         }
     }
 
-    // MARK EVERYTHING AS DONE
+    // FIRST TIME MARKING DONE
+    var firstTimeDone = true;
+
+    // MARK EVERYTHING AS DONE OR UNDONE AT ONCE
     markAllDone.onclick = function() {
-        $("ul li").addClass("strike");
-    };
+        // IF IT IS FIRST TIME, MARK ALL AS DONE
+        if(firstTimeDone) {
+            $("#list li").addClass("strike");
+            markDoneText.textContent = "Mark All as Not Done";
+            firstTimeDone = false;
+        }
+        // CHECK IF ALL THE ITEMS ARE CHECKED, IF SO, REMOVE THAT CLASS
+        else if ($("#list li").hasClass("strike")) {
+            $("#list li").removeClass("strike");
+            markDoneText.textContent = "Mark All as Done";
+        }
+        // ELSE ADD THE CLASS
+        else {
+            $("#list li").addClass("strike");
+            markDoneText.textContent = "Mark All as Not Done";
+        }
+    }
 });
