@@ -18,9 +18,16 @@ $(document).ready(function() {
     // CREATES A COUNTER THAT WILL BE ASSIGNED TO THE ID
     var counter = 2;
 
+    // ENTER KEY FUNCTIONING AS BUTTON ON CLICK
+    $("#input").keypress(function(event){
+        if(event.keyCode == 13){
+            event.preventDefault();
+            $("#btn-add").click();
+        }
+    });
+
     // WHEN ADD BUTTON IS CLICKED
     addButton.onclick = function() {
-
         //CHECKS IF INPUT IS BLANK, SHOW AN ALERT (FOR NOW)
         if(input.value === "") alert("Please enter some task.");
         else {
@@ -31,6 +38,8 @@ $(document).ready(function() {
             createDoneButton(doneButton);
             // APPENDS THE BUTTON TO THE LIST ITEM FIRST
             addToList(doneButton, addTask);
+            // STORES THE DATA LOCALLY WHEN CLICKED
+            storeListLocally();
             // CLEARS THE VALUE IN THE INPUT FIELD
             input.value = "";
         }
@@ -58,7 +67,7 @@ $(document).ready(function() {
         li.appendChild(document.createTextNode(item));
         // ADDS THE LIST ITEM TO THE END OF THE UNORDERED LIST
         ul.appendChild(li);
-        // PUSHES 'ADDTASK' TO THE END OF ARRAY
+        // HIDES THE MESSSAGE WHEN A TASK IS ADDED
         $("#message").hide();
     }
 
