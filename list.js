@@ -39,8 +39,6 @@ $(document).ready(function() {
             createDoneButton(doneButton);
             // APPENDS THE BUTTON TO THE LIST ITEM FIRST
             addToList(doneButton, addTask);
-            // STORES THE DATA LOCALLY WHEN CLICKED
-            storeListLocally();
             // CLEARS THE VALUE IN THE INPUT FIELD
             input.value = "";
         }
