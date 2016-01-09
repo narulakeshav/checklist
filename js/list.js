@@ -17,6 +17,7 @@ $(document).ready(function() {
     var input = document.getElementById("input");
     var ul = document.getElementById("list");
     var clearCompletedTasks = document.getElementById("btn-clear-task");
+    var markAllDone = document.getElementById("btn-mark-done");
 
     // FOCUSING ON THE INPUT WHEN PAGE LOADS
     input.focus();
@@ -104,4 +105,9 @@ $(document).ready(function() {
             else $("#message").hide();
         }
     }
+
+    // MARK EVERYTHING AS DONE
+    markAllDone.onclick = function() {
+        $("ul li").addClass("strike");
+    };
 });

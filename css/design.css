@@ -164,4 +164,7 @@ ul li {
         padding-bottom: 6px;
         margin: 2px 15px 2px -2px;
     }
+    .markdone-div {
+        display: none;
+    }
 } 
