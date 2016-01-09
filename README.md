@@ -4,4 +4,4 @@ An online, flat Checklist application which allows you add tasks and mark them d
 
 [View CheckList](http://narulakeshav.github.io/checklist)
 
-![Screenshot](http://goo.gl/nuDR1C)
+![Screenshot](http://goo.gl/BY51mD)
