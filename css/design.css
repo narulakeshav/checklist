@@ -1,9 +1,10 @@
 body {
     background: radial-gradient(circle, #7AB2EB, #4E95DC);
-    padding-top: 5%;
+    padding-top: 6%;
     height: 100vh;
     font-family: Roboto;
 }
+a:hover { text-decoration: none; }
 .card-header {
     background: rgba(0,0,0,0.3);
     padding: 30px;
@@ -127,6 +128,22 @@ ul li {
     padding: 14px 25px 17px 25px;
     padding-bottom: 13px;
     font-family: Roboto;
+}
+.by-kn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+}
+.by-kn a {
+    color: #FFF;
+    border-bottom: 1px dotted #FFF;
+    transition: all 0.5s;
+}
+.by-kn:hover a {
+    color: #BADDFF;
+    border-color: #BADDFF;
 }
 
 /* MAKING IT RESPONSIVE */
