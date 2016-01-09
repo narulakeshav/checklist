@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CheckList</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet'>
+	<link rel="stylesheet" href="css/hover-min.css">
+	<link rel="stylesheet" href="css/design.css">
+</head>
+<body>
+	<div class="col-md-12">
+		<div class="col-md-6 col-md-offset-3" align="center">
+			<div class="col-md-12 card-header">
+				<input type="text" id="input" placeholder="Add a Task">
+				<button class="btn btn-primary" id="btn-add">Add</button>
+			</div>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<div class="col-md-12 card list-div" align="left">
+				<ul id="list">
+					<li>
+						<button class="mark-done" id="0" onclick="completeTask(this.id)">Done</button>Added Sample List
+					</li>
+					<li class="strike">
+						<button class="mark-done completed" id="1" onclick="completeTask(this.id)">Done</button>Marked Done Sample List
+					</li>
+				</ul>
+				<p class="no-ul-message" id="message">
+					<span class="fa fa-hand-peace-o"></span>&nbsp;&nbsp;Sweet! All tasks are cleared!!
+				</p>
+				<div class="col-md-12 card-footer hvr-sweep-to-right">
+				<button class="btn btn-clear-task" id="btn-clear-task">
+					<span class="fa fa-refresh"></span>&nbsp;&nbsp;Clear Completed Tasks
+				</button>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="list.js"></script>
+</body>
+</html>
