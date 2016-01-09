@@ -13,6 +13,7 @@ $(document).ready(function() {
     $("#message").hide();
 
     // GETS ELEMENT'S REFERENCES FROM HTML DOCUMENT
+    "use strict";
     var addButton = document.getElementById("btn-add");
     var input = document.getElementById("input");
     var ul = document.getElementById("list");
