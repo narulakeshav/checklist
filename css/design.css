@@ -162,9 +162,6 @@ ul li {
     }
     .mark-done {
         padding-bottom: 6px;
-        margin: 2px 15px 2px 5px;
-    }
-    ul li {
-        padding: 16px 10px 16px 0px;
+        margin: 2px 15px 2px -5px;
     }
 } 
