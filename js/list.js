@@ -92,8 +92,13 @@ $(document).ready(function() {
 
     // CLEARS ALL THE REMOVED TASKS FROM THE LIST
     clearCompletedTasks.onclick = function() {
-        $(".strike").remove();
-        if($("#list li").length === 0) $("#message").show();
-        else $("#message").hide();
+        if($("#message").is(":visible")) {
+            alert("All tasks are already cleared.");
+        }
+        else {
+            $(".strike").remove();
+            if($("#list li").length === 0) $("#message").show();
+            else $("#message").hide();
+        }
     }
 });
