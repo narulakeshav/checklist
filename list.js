@@ -6,6 +6,7 @@ function completeTask(id) {
 
 $(document).ready(function() {
  
+
     // HIDES THE "CLEAR ALL" MESSAGE
     $("#message").hide();
 
@@ -14,6 +15,9 @@ $(document).ready(function() {
     var input = document.getElementById("input");
     var ul = document.getElementById("list");
     var clearCompletedTasks = document.getElementById("btn-clear-task");
+
+    // FOCUSING ON THE INPUT WHEN PAGE LOADS
+    input.focus();
 
     // CREATES A COUNTER THAT WILL BE ASSIGNED TO THE ID
     var counter = 2;
