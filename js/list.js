@@ -4,9 +4,6 @@ function completeTask(id) {
     $(clickedButton).parent("li").toggleClass("strike");
 }
 
-// FIRST TIME VARIABLE
-var firstTime = true;
-
 $(document).ready(function() {
  
     // INTIALIZING WOWJS
@@ -36,10 +33,13 @@ $(document).ready(function() {
         }
     });
 
+    // FIRST TIME VARIABLE
+    var firstTime = true;
+
     // CLEARING THE DEFAULT LIST ITEMS IF THE USER ENTERS SOMETHING FOR FIRST TIME
     function isFirstTime() {
         if(firstTime) {
-            // Something
+            // REMOVES ALL THE LIST ITEMS IN THE UL
             $("#list").empty();
             firstTime = false;
         }
@@ -48,9 +48,10 @@ $(document).ready(function() {
     // WHEN ADD BUTTON IS CLICKED
     addButton.onclick = function() {
         //CHECKS IF INPUT IS BLANK, SHOW AN ALERT (FOR NOW)
-        isFirstTime();
         if(input.value === "") alert("Please enter some task.");
         else {
+            // CHECKS IF IT'S FIRST TIME ENTERING SOMETHING
+            isFirstTime();
             // STORES THE INPUT VALUE IN 'ADDTASK' VARIABLE
             var addTask = input.value;
             // CREATES A 'MARK-DONE' BUTTON ELEMENT
