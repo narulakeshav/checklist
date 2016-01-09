@@ -4,6 +4,9 @@ function completeTask(id) {
     $(clickedButton).parent("li").toggleClass("strike");
 }
 
+// FIRST TIME VARIABLE
+var firstTime = true;
+
 $(document).ready(function() {
  
 
@@ -31,9 +34,19 @@ $(document).ready(function() {
         }
     });
 
+    // CLEARING THE DEFAULT LIST ITEMS IF THE USER ENTERS SOMETHING FOR FIRST TIME
+    function isFirstTime() {
+        if(firstTime) {
+            // Something
+            $("#list").empty();
+            firstTime = false;
+        }
+    }
+
     // WHEN ADD BUTTON IS CLICKED
     addButton.onclick = function() {
         //CHECKS IF INPUT IS BLANK, SHOW AN ALERT (FOR NOW)
+        isFirstTime();
         if(input.value === "") alert("Please enter some task.");
         else {
             // STORES THE INPUT VALUE IN 'ADDTASK' VARIABLE
