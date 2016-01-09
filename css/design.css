@@ -88,8 +88,7 @@ ul li {
     background: #5499DE;
     color: #FFF;
 }
-.mark-done,
-.mark-done:focus {
+.mark-done {
     margin: 2px 15px 2px 10px;
     line-height: 15px;
     padding-top: 4px;
