@@ -79,10 +79,12 @@ ul li {
     list-style-type: none;
     color: #555;
     font-size: 15px;
+    transition: all 0.5s;
 }
 .strike {
     text-decoration: line-through;
     color: #888;
+    transition: all 0.5s;
 }
 .strike button {
     background: #5499DE;

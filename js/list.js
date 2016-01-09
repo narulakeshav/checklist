@@ -1,11 +1,11 @@
 // FUNCTION THAT CHECKS WHICH WHICH MARK-DONE BUTTON WAS CLICKED
 function completeTask(id) {
+    "use strict";
     var clickedButton = document.getElementById(id);
     $(clickedButton).parent("li").toggleClass("strike");
 }
 
 $(document).ready(function() {
- 
     // INTIALIZING WOWJS
     new WOW().init();
 
@@ -18,6 +18,7 @@ $(document).ready(function() {
     var ul = document.getElementById("list");
     var clearCompletedTasks = document.getElementById("btn-clear-task");
     var markAllDone = document.getElementById("btn-mark-done");
+    var markDoneText = document.getElementById("mark-all");
 
     // FOCUSING ON THE INPUT WHEN PAGE LOADS
     input.focus();
@@ -49,7 +50,7 @@ $(document).ready(function() {
     // WHEN ADD BUTTON IS CLICKED
     addButton.onclick = function() {
         //CHECKS IF INPUT IS BLANK, SHOW AN ALERT (FOR NOW)
-        if(input.value === "") alert("Please enter some task.");
+        if(input.value === "") { alert("Please enter some task."); }
         else {
             // CHECKS IF IT'S FIRST TIME ENTERING SOMETHING
             isFirstTime();
@@ -106,8 +107,27 @@ $(document).ready(function() {
         }
     }
 
-    // MARK EVERYTHING AS DONE
+    // FIRST TIME MARKING DONE
+    var firstTimeDone = true;
+
+    // MARK EVERYTHING AS DONE OR UNDONE AT ONCE
     markAllDone.onclick = function() {
-        $("ul li").addClass("strike");
-    };
+        // IF IT IS FIRST TIME, MARK ALL AS DONE
+        if(firstTimeDone) {
+            $("#list li").addClass("strike");
+            markDoneText.textContent = "Mark All as Not Done";
+            firstTimeDone = false;
+        }
+        // CHECK IF ALL THE ITEMS ARE CHECKED, IF SO, REMOVE THAT CLASS
+        else if ($("#list li").hasClass("strike")) {
+            $("#list li").removeClass("strike");
+            markDoneText.textContent = "Mark All as Done";
+        }
+        // ELSE ADD THE CLASS
+        else {
+            $("#list li").addClass("strike");
+            markDoneText.textContent = "Mark All as Not Done";
+        }
+    }
+
 });
