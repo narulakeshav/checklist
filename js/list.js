@@ -116,18 +116,18 @@ $(document).ready(function() {
         // IF IT IS FIRST TIME, MARK ALL AS DONE
         if(firstTimeDone) {
             $("#list li").addClass("strike");
-            markDoneText.textContent = "Mark All as Not Done";
+            markDoneText.textContent = "Unselect All";
             firstTimeDone = false;
         }
         // CHECK IF ALL THE ITEMS ARE CHECKED, IF SO, REMOVE THAT CLASS
         else if ($("#list li").hasClass("strike")) {
             $("#list li").removeClass("strike");
-            markDoneText.textContent = "Mark All as Done";
+            markDoneText.textContent = "Select All";
         }
         // ELSE ADD THE CLASS
         else {
             $("#list li").addClass("strike");
-            markDoneText.textContent = "Mark All as Not Done";
+            markDoneText.textContent = "Unselect All";
         }
     }
 });
