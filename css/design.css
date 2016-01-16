@@ -1,5 +1,5 @@
 body {
-    background: radial-gradient(circle, #7AB2EB, #4E95DC);
+    background: radial-gradient(circle, #F34D71, #AC2E48);
     padding-top: 6%;
     height: 100vh;
     font-family: Roboto;
@@ -21,11 +21,11 @@ a:hover { text-decoration: none; }
     margin-bottom: 100px;
 }
 .card-footer {
-    background: #E8F4FF;
+    background: #ffafaf;
     width: 100%;
 }
 .card-footer:hover .btn-clear-task {
-    color: #3E6996;
+    color: #AC2E48;
     outline: 0;
 }
 input[type="text"] {
@@ -60,10 +60,10 @@ input[type="text"]:focus {
     border-radius: 1px;
     background: #FFF;
     transition: all 0.5s;
-    color: #4A75A1;
+    color: #6f1010;
 }
 .btn-primary:hover{
-    background: #5499DE;
+    background: #de5454;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     color: #FFF;
 }
@@ -87,7 +87,7 @@ ul li {
     transition: all 0.5s;
 }
 .strike button {
-    background: #5499DE;
+    background: #F34D71 ;
     color: #FFF;
 }
 .mark-done {
@@ -105,7 +105,7 @@ ul li {
     text-transform: uppercase;
 }
 .mark-done:hover {
-    background: #4A75A1;
+    background: #F34D71;
     color: #FFF;
 }
 .btn-clear-task,
@@ -114,16 +114,16 @@ ul li {
     background: transparent;
     text-transform: uppercase;
     font-size: 13px;
-    color: #638CB8;
+    color: #AC2E48;
     transition: all 0.5s;
     outline: 0;
 }
 .btn-clear-task:hover {
-    color: #3E6996 !important;
+    color: #94273E !important;
 }
 
 .hvr-sweep-to-right:before {
-    background: #C7E3FF;
+    background: #FF747B;
 }
 .no-ul-message {
     color: #666;
