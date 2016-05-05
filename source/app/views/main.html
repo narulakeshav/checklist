@@ -9,7 +9,7 @@
         <div class="col-xs-12">
             <ul class="list">
                 <li ng-repeat="task in vm.tasks">
-                    <button class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
+                    <button ng-class="{done: task.completed}" class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
                     <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
                     <span ng-class="{completed: task.completed}">{{task.value}}</span>
                 </li>
