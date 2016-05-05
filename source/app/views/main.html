@@ -1,42 +1,29 @@
-<div class="container">
-    <div class="row">
-            <div class="card-header">
-                <form ng-submit="vm.addTask()">
-                    <input type="text" id="new-task" ng-model="vm.newTask" class="col-xs-12 col-sm-10" placeholder="Add a task and press ENTER" autofocus required>
-                    <button type="submit" class="btn-addtask col-xs-12 col-sm-2">Add</button>
-                </form>
-            </div>
-        <!--<div class="col-xs-12 col-sm-4 text-right">-->
-            <!--<button type="button" class="btn btn-success" ng-click="vm.markAll()" ng-show="vm.tasks.length">Mark all</button>-->
-            <!--<button type="button" class="btn btn-danger" ng-click="vm.clearCompleted()" ng-show="vm.tasks.length">Delete done</button>-->
-        <!--</div>-->
+<div class="container main">
+    <div class="row header">
+        <form ng-submit="vm.addTask()">
+            <input type="text" id="new-task" ng-model="vm.newTask" class="col-xs-12 col-sm-11" placeholder="Add a task and press ENTER" autofocus required>
+            <button type="submit" class="btn-addtask col-xs-12 col-sm-1"><i class="fa fa-plus"></i></button>
+        </form>
     </div>
-    <div class="row" id="todo" ng-show="vm.tasks.length" ng-cloak>
+    <div class="row content" ng-show="vm.tasks.length" ng-cloak>
         <div class="col-xs-12">
-                <ul class="list">
-                    <li ng-repeat="task in vm.tasks">
-                        <button class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
-                        <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
-                        <span ng-class="{completed: task.completed}">{{task.value}}</span>
-                        <!--<div class="view clearfix">-->
-                        <!--<div class="pull-left">-->
-                        <!--<span ng-show="!task.edit" ng-class="{completed: task.completed}">{{task.value}}</span>-->
-                        <!--<input type="text" ng-show="task.edit" ng-model="task.value" ng-keypress="vm.checkEdit($event, task)">-->
-                        <!--</div>-->
-                        <!--<div class="pull-right">-->
-                        <!--<button type="button" class="btn-task" ng-click="task.edit = !task.edit">-->
-                        <!--<span class="glyphicon glyphicon-edit"></span>-->
-                        <!--</button>-->
-                        <!--<button type="button" class="btn-task" ng-click="vm.toggleTask(task)">-->
-                        <!--<span class="glyphicon glyphicon-ok"></span>-->
-                        <!--</button>-->
-                        <!--<button type="button" class="btn-task" ng-click="vm.deleteTask(task)">-->
-                        <!--<span class="glyphicon glyphicon-remove"></span>-->
-                        <!--</button>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    </li>
-                </ul>
+            <ul class="list">
+                <li ng-repeat="task in vm.tasks">
+                    <button class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
+                    <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
+                    <span ng-class="{completed: task.completed}">{{task.value}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-xs-12">
+            <button class="mark-done" ng-click="vm.markAll()" ng-show="vm.tasks.length">
+                <span class="fa fa-check-square-o"></span>&nbsp;&nbsp;<span>Mark all as done</span>
+            </button>
+            <button class="mark-done" ng-click="vm.clearCompleted()" ng-show="vm.tasks.length">
+                <span class="fa fa-check-square"></span>&nbsp;&nbsp;<span>Clear Completed</span>
+            </button>
         </div>
     </div>
 </div>

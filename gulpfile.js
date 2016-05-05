@@ -21,7 +21,7 @@ var paths = {
     watchScript: 'source/app/**/*.js',
     angular: 'node_modules/angular/angular.js',
     ngRoute: 'node_modules/angular-route/angular-route.js',
-    fonts: 'node_modules/bootstrap-less/fonts/*'
+    fonts: ['node_modules/bootstrap-less/fonts/*', 'node_modules/font-awesome/fonts/*']
 };
 
 var dist = {
@@ -63,7 +63,8 @@ gulp.task('less', function() {
         .pipe(less({
             paths: [
                 '.',
-                './node_modules/bootstrap-less'
+                './node_modules/bootstrap-less',
+                './node_modules/font-awesome'
             ]
         }))
         .pipe(cleancss({compatibility: 'ie8'}))

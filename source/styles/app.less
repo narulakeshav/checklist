@@ -1,19 +1,20 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 @import "bootstrap/grid";
+@import "less/font-awesome";
 //@import url(https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext);
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext);
 
-@fontcolor: #555;
 @mainfont: 'Roboto', sans-serif;
-@basecolor: #fff;
-@linkcolor: #0000f6;
+@maincolor: #27ae60;
+@secondarycolor: #2ecc71;
 
 body {
-  background: radial-gradient(circle, #7AB2EB, #4E95DC);
-  padding-top: 6%;
-  height: 100vh;
+  background: radial-gradient(circle, @secondarycolor, @maincolor);
   font-family: @mainfont;
+  font-size: 16px;
+  color: #666;
+  margin: 0;
 }
 
 * {
@@ -22,19 +23,17 @@ body {
   box-sizing: border-box;
 }
 
-#app {
-  margin-top: 2em;
+button {
+  border: 0;
+  cursor: pointer;
 }
 
-#todo {
-  background: #FFF;
-  padding: 7px 0 0 0;
-  border-radius: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 20px rgba(0, 0, 0, 0.23);
-  overflow: hidden;
+.main {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.09), 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 10%;
 }
 
-.card-header {
+.header {
   background: rgba(0, 0, 0, 0.3);
   padding: 30px;
   color: #fff;
@@ -56,83 +55,80 @@ body {
     color: #FFF;
   }
 
+  button {
+    background-color: #fff;
+    color: @maincolor;
+    padding: 0.85em 0;
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+    transition: all linear 0.3s;
+
+    &:hover, &:focus {
+      background-color: @maincolor;
+      color: #fff;
+    }
+
+  }
+
   ::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.7);
   }
 
 }
 
-.btn-addtask, .btn-addtask:focus {
-    padding: 12px 20px;
-    border: none;
-    font-size: 13px;
+.content, .footer {
+  background: #FFF;
+  overflow: hidden;
+
+  button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    background-color: #eee;
+    color: #aaa;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
-    cursor: pointer;
-    margin-bottom: -5px;
-    outline: 0;
-    border-radius: 1px;
-    background: #FFF;
-    transition: all 0.5s;
-    color: #4A75A1;
+    -webkit-transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+    -ms-transition: all linear 0.2s;
+    -o-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+
+    &:hover {
+      background: @maincolor;
+      color: #f9f9f9;
+    }
+
+  }
+
 }
 
-.btn-addtask:hover {
-  background: #5499DE;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-  color: #FFF;
+.content {
+  padding: 7px 0 0 0;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 16px 15px 16px 0;
+      list-style-type: none;
+      font-size: 15px;
+      transition: all 0.5s;
+
+      .completed {
+        text-decoration: line-through;
+        color: #ccc;
+      }
+
+    }
+  }
+
 }
 
-.btn-task {
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.mark-done {
-  margin: 2px 15px 2px 10px;
-  line-height: 15px;
-  padding-top: 4px;
-  font-size: 12px;
-  background: #EEE;
-  color: #999;
-  border-radius: 2px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.5s;
-  outline: 0;
-  text-transform: uppercase;
-}
-.mark-done:hover {
-  background: #4A75A1;
-  color: #FFF;
-}
-
-ul li {
-  margin-left: -20px;
-  padding: 16px 15px 16px 0px;
-  list-style-type: none;
-  color: #555;
-  font-size: 15px;
-  transition: all 0.5s;
-}
-.strike {
-  text-decoration: line-through;
-  color: #888;
-  transition: all 0.5s;
-}
-.strike button {
-  background: #5499DE;
-  color: #FFF;
-}
-
-.task {
-  padding: 0.6em 0.1em;
-  margin-bottom: 0.33em;
-  border-bottom: 1px dashed #ccc;
-}
-
-.completed {
-  text-decoration: line-through;
-  color: #0000cc;
+.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

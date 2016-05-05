@@ -13,7 +13,9 @@
 
         var data = {
 
-            tasks: [],
+            tasks: [
+                {value: 'Initial task', completed: false}
+            ],
 
             add: function(task) {
                 this.tasks.unshift(task);
