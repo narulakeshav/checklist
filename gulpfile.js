@@ -19,8 +19,7 @@ var paths = {
     styles: 'source/styles/*.less',
     scripts: 'source/app/*/*.js',
     watchScript: 'source/app/**/*.js',
-    angular: 'node_modules/angular/angular.js',
-    ngRoute: 'node_modules/angular-route/angular-route.js',
+    angular: ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js', 'node_modules/angular-resource/angular-resource.js'],
     fonts: ['node_modules/bootstrap-less/fonts/*', 'node_modules/font-awesome/fonts/*']
 };
 
@@ -41,7 +40,7 @@ gulp.task('lint', function() {
 
 gulp.task('vendorScripts', function() {
     gulp
-        .src([paths.angular, paths.ngRoute])
+        .src(paths.angular)
         .pipe(concat('vendor.min.js'))
         .pipe(gulp.dest(dist.scripts));
 });

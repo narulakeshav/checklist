@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Angular checklist",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "server": "json-server --watch index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eskab/checklist.git"
@@ -16,6 +18,7 @@
   "homepage": "https://github.com/eskab/checklist#readme",
   "dependencies": {
     "angular": "^1.5.5",
+    "angular-resource": "^1.5.5",
     "angular-route": "^1.5.5",
     "bootstrap-less": "^3.3.8",
     "font-awesome": "^4.6.1"
@@ -30,6 +33,7 @@
     "gulp-ng-annotate": "^2.0.0",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.2",
+    "json-server": "^0.8.10"
   }
 }

@@ -9,13 +9,21 @@
         .module('checklist')
         .factory('store', store);
 
-    function store() {
+    store.$inject = ['$resource'];
+
+    function store($resource) {
 
         var data = {
 
-            tasks: [
-                {value: 'Initial task', completed: false}
-            ],
+            tasks: [],
+
+            api: $resource('http://localhost:3000/tasks/', null, {
+                method: 'PUT'
+            }),
+
+            get: function() {
+                return this.api.query();
+            },
 
             add: function(task) {
                 this.tasks.unshift(task);

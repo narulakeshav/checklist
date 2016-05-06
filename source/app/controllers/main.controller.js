@@ -14,7 +14,13 @@
     function MainController(store) {
         var vm = this;
 
-        vm.tasks = store.tasks;
+        vm.tasks = store.get()
+            .$promise.then(function(tasks) {
+                vm.tasks = tasks;
+            }, function(error) {
+                console.log('an error has occured');
+                console.log(error);
+            });
 
         vm.addTask = function() {
             var newTask;
