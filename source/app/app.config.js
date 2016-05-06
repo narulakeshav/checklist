@@ -17,7 +17,10 @@
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    tasksPrepService: tasksPrepService
+                }
             })
             .otherwise('/', {
                 templateUrl: 'views/main.html',
@@ -25,6 +28,10 @@
                 controllerAs: 'vm'
             });
 
+    }
+
+    function tasksPrepService(store) {
+        return store.get();
     }
 
 }());

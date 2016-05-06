@@ -9,13 +9,11 @@
         .module('checklist')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['store'];
+    MainController.$inject = ['store', 'tasksPrepService'];
 
-    function MainController(store) {
+    function MainController(store, tasksPrepService) {
         var vm = this;
-        vm.tasks = [];
-
-        activate();
+        vm.tasks = tasksPrepService;
 
         vm.addTask = function() {
             var newTask;
@@ -25,10 +23,8 @@
                 completed: false
             };
 
-            store.add(newTask).then(function(data) {
+            store.add(newTask).then(function() {
                 vm.newTask = '';
-                console.log('success');
-                console.log(data);
             });
         };
 
@@ -53,13 +49,6 @@
         vm.update = function() {
             vm.tasks = store.tasks;
         };
-
-        function activate() {
-            return store.get().then(function(data) {
-                vm.tasks = store.tasks = data;
-                return vm.tasks;
-            });
-        }
 
     }
 

@@ -6,6 +6,6 @@
     'use strict';
 
     angular
-        .module('checklist', ['ngRoute', 'ngResource']);
+        .module('checklist', ['ngRoute', 'ngResource', 'ngAnimate']);
 
 }());

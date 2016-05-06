@@ -68,7 +68,6 @@
                     promises.push(self.delete(task));
                 });
 
-                console.log('finished');
                 $q.all(promises).then(function(res) {
                     console.log('FINISHED');
                 }, function(error) {

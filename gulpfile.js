@@ -19,7 +19,12 @@ var paths = {
     styles: 'source/styles/*.less',
     scripts: 'source/app/*/*.js',
     watchScript: 'source/app/**/*.js',
-    angular: ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js', 'node_modules/angular-resource/angular-resource.js'],
+    angular: [
+        'node_modules/angular/angular.js', 
+        'node_modules/angular-route/angular-route.js', 
+        'node_modules/angular-resource/angular-resource.js',
+        'node_modules/angular-animate/angular-animate.js'
+    ],
     fonts: ['node_modules/bootstrap-less/fonts/*', 'node_modules/font-awesome/fonts/*']
 };
 
