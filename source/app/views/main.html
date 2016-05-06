@@ -9,15 +9,18 @@
         <div class="col-xs-12">
             <ul class="list">
                 <li ng-repeat="task in vm.tasks">
-                    <button ng-class="{active: task.completed}" class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
-                    <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
-                    <!-- <button ng-class="{active: edit}" class="mark-done" ng-click="edit = !edit">Edit</button> -->
-                    <span ng-show="!edit" ng-class="{completed: task.completed}" ng-click="edit = !edit">{{task.value}}</span>
-
-                    <form class="edit-task" ng-show="edit" ng-submit="vm.update(task); edit = !edit">
-                        <input class="edit" type="text" ng-model="task.value">
-                        <button class="mark-done">OK</button>
-                    </form>
+                    <div class="buttons-ctr col-xs-12 col-md-3 col-lg-2">
+                        <button ng-class="{active: task.completed}" class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
+                        <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10">
+                        <span ng-show="!edit" ng-class="{completed: task.completed}" ng-click="edit = !edit">{{task.value}}</span>
+    
+                        <form class="edit-task" ng-show="edit" ng-submit="vm.update(task); edit = !edit">
+                            <input class="edit" type="text" ng-model="task.value">
+                            <button class="mark-done">OK</button>
+                        </form>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -1,18 +1,18 @@
 {
   "tasks": [
     {
-      "value": "default task",
+      "value": "default task lorem ipsum so long task im learning angular im writing looooong task default task lorem ipsum so long task im learning angular im writing looooong tadefault task lorem ipsum so long task im learning angular im writing looooong tasksk",
       "completed": false,
       "id": 1
     },
     {
       "value": "second task",
-      "completed": true,
+      "completed": false,
       "id": 2
     },
     {
       "value": "third task",
-      "completed": true,
+      "completed": false,
       "id": 3
     }
   ]

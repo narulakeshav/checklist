@@ -33,6 +33,10 @@ button {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.09), 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
+.buttons-ctr {
+  margin-bottom: 10px;
+}
+
 .header {
   background: rgba(0, 0, 0, 0.3);
   padding: 30px;
@@ -113,10 +117,19 @@ button {
     margin: 0;
 
     li {
-      padding: 16px 15px 16px 0;
+      padding: 8px 0;
+      border-bottom: 1px dashed #ddd;
       list-style-type: none;
       font-size: 15px;
       transition: all 0.5s;
+      text-align: center;
+      overflow: hidden;
+
+      @media (min-width: @screen-md-min) {
+        padding: 16px 0;
+        border: 0;
+        text-align: left;
+      }
 
       .completed {
         text-decoration: line-through;
@@ -131,6 +144,21 @@ button {
 .footer {
   padding-top: 20px;
   padding-bottom: 20px;
+  text-align: center;
+
+  @media (min-width: @screen-md-min) {
+    text-align: left; 
+  }
+
+  button {
+    margin: 10px 0;
+
+    @media (min-width: @screen-md-min) {
+      margin: 0;
+    }
+
+  }
+
 }
 
 button.active {
