@@ -1,9 +1,19 @@
 {
   "tasks": [
     {
-      "value": "edited task",
-      "completed": true,
+      "value": "default task",
+      "completed": false,
       "id": 1
+    },
+    {
+      "value": "second task",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "value": "third task",
+      "completed": true,
+      "id": 3
     }
   ]
 }

@@ -48,7 +48,6 @@
 
             toggle: function(task) {
                 task.completed = !task.completed;
-                console.log(task);
 
                 this.update(task);
             },

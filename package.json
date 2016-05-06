@@ -4,6 +4,7 @@
   "description": "Angular checklist",
   "main": "index.js",
   "scripts": {
+    "start": "gulp default",
     "server": "json-server --watch db.json"
   },
   "repository": {

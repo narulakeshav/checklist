@@ -9,9 +9,9 @@
         .module('checklist')
         .config(config);
 
-    config.$inject = ['$routeProvider'];
+    config.$inject = ['$routeProvider', '$compileProvider'];
 
-    function config($routeProvider) {
+    function config($routeProvider, $compileProvider) {
 
         $routeProvider
             .when('/', {
@@ -27,6 +27,8 @@
                 controller: 'MainController',
                 controllerAs: 'vm'
             });
+
+        $compileProvider.debugInfoEnabled(false);
 
     }
 
