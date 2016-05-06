@@ -4,7 +4,7 @@
   "description": "Angular checklist",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch index.js"
+    "server": "json-server --watch db.json"
   },
   "repository": {
     "type": "git",

@@ -13,14 +13,9 @@
 
     function MainController(store) {
         var vm = this;
+        vm.tasks = [];
 
-        vm.tasks = store.get()
-            .$promise.then(function(tasks) {
-                vm.tasks = tasks;
-            }, function(error) {
-                console.log('an error has occured');
-                console.log(error);
-            });
+        activate();
 
         vm.addTask = function() {
             var newTask;
@@ -30,7 +25,11 @@
                 completed: false
             };
 
-            store.add(newTask);
+            store.add(newTask).then(function(data) {
+                vm.newTask = '';
+                console.log('success');
+                console.log(data);
+            });
         };
 
         vm.deleteTask = function(task) {
@@ -48,14 +47,19 @@
         };
 
         vm.clearCompleted = function() {
-            vm.tasks = store.clear();
+            store.clear();
         };
 
-        vm.checkEdit = function(e, task) {
-            if(e.keyCode === 13) {
-                task.edit = !task.edit;
-            }
+        vm.update = function() {
+            vm.tasks = store.tasks;
         };
+
+        function activate() {
+            return store.get().then(function(data) {
+                vm.tasks = store.tasks = data;
+                return vm.tasks;
+            });
+        }
 
     }
 
