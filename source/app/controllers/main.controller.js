@@ -23,12 +23,14 @@
                 completed: false
             };
 
-            store.add(newTask).then(function() {
+            store.add(newTask).then(function(res) {
+                vm.tasks.push(res);
                 vm.newTask = '';
             });
         };
 
         vm.deleteTask = function(task) {
+            vm.tasks.splice(vm.tasks.indexOf(task), 1);
             store.delete(task);
         };
 
@@ -46,8 +48,12 @@
             store.clear();
         };
 
-        vm.update = function() {
-            vm.tasks = store.tasks;
+        vm.update = function(task) {
+            store.update(task);
+        };
+
+        vm.editTask = function() {
+
         };
 
     }

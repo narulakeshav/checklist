@@ -29,6 +29,7 @@
                 var self = this;
                 
                 return this.api.save(task, function(res) {
+                    console.log(res);
                     self.tasks.push(res);
                 }, function(error) {
                     console.log(error);
@@ -47,6 +48,7 @@
 
             toggle: function(task) {
                 task.completed = !task.completed;
+                console.log(task);
 
                 this.update(task);
             },

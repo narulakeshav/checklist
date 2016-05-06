@@ -5,23 +5,29 @@
             <button type="submit" class="btn-addtask col-xs-12 col-sm-1"><i class="fa fa-plus"></i></button>
         </form>
     </div>
-    <div class="row content" ng-show="vm.tasks.length" ng-cloak>
+    <div class="row content" ng-show="vm.tasks.length">
         <div class="col-xs-12">
             <ul class="list">
                 <li ng-repeat="task in vm.tasks">
-                    <button ng-class="{done: task.completed}" class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
+                    <button ng-class="{active: task.completed}" class="mark-done" ng-click="vm.toggleTask(task)">Done</button>
                     <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
-                    <span ng-class="{completed: task.completed}">{{task.value}}</span>
+                    <!-- <button ng-class="{active: edit}" class="mark-done" ng-click="edit = !edit">Edit</button> -->
+                    <span ng-show="!edit" ng-class="{completed: task.completed}" ng-click="edit = !edit">{{task.value}}</span>
+
+                    <form class="edit-task" ng-show="edit" ng-submit="vm.update(task); edit = !edit">
+                        <input class="edit" type="text" ng-model="task.value">
+                        <button class="mark-done">OK</button>
+                    </form>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="row footer">
+    <div class="row footer" ng-show="vm.tasks.length">
         <div class="col-xs-12">
-            <button class="mark-done" ng-click="vm.markAll()" ng-show="vm.tasks.length">
+            <button class="mark-done" ng-click="vm.markAll()">
                 <span class="fa fa-check-square-o"></span>&nbsp;&nbsp;<span>Mark all as done</span>
             </button>
-            <button class="mark-done" ng-click="vm.clearCompleted()" ng-show="vm.tasks.length">
+            <button class="mark-done" ng-click="vm.clearCompleted()">
                 <span class="fa fa-check-square"></span>&nbsp;&nbsp;<span>Clear Completed</span>
             </button>
         </div>
