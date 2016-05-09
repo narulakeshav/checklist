@@ -26,6 +26,9 @@
     "font-awesome": "^4.6.1"
   },
   "devDependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.7",
     "gulp-concat": "^2.6.0",
@@ -36,6 +39,7 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.2",
-    "json-server": "^0.8.10"
+    "json-server": "^0.8.10",
+    "jsonwebtoken": "^6.2.0"
   }
 }

@@ -7,11 +7,11 @@
 
     angular
         .module('checklist')
-        .controller('MainController', MainController);
+        .controller('TaskController', TaskController);
 
-    MainController.$inject = ['store', 'tasksPrepService'];
+    TaskController.$inject = ['store', 'tasksPrepService'];
 
-    function MainController(store, tasksPrepService) {
+    function TaskController(store, tasksPrepService) {
         var vm = this;
         vm.tasks = store.tasks = tasksPrepService;
 

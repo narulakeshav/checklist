@@ -15,16 +15,21 @@
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainController',
+                templateUrl: 'views/task/task.html',
+                controller: 'TaskController',
                 controllerAs: 'vm',
                 resolve: {
                     tasksPrepService: tasksPrepService
                 }
             })
+            .when('/login', {
+                templateUrl: 'views/account/login.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
             .otherwise('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainController',
+                templateUrl: 'views/task/task.html',
+                controller: 'TaskController',
                 controllerAs: 'vm'
             });
 

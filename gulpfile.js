@@ -15,9 +15,9 @@ var paths = {
     module: 'source/app/app.js',
     config: 'source/app/app.config.js',
     index: 'source/index.html',
-    views: 'source/app/views/*.html',
+    views: 'source/app/**/*.html',
     styles: 'source/styles/*.less',
-    scripts: 'source/app/*/*.js',
+    scripts: 'source/app/**/*.js',
     watchScript: 'source/app/**/*.js',
     angular: [
         'node_modules/angular/angular.js', 
@@ -32,7 +32,7 @@ var dist = {
     main: 'dist/',
     scripts: 'dist/js/',
     styles: 'dist/styles/',
-    views: 'dist/views',
+    views: 'dist/views/',
     fonts: 'dist/fonts'
 };
 
