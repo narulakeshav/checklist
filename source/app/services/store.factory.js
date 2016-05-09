@@ -29,21 +29,16 @@
                 var self = this;
                 
                 return this.api.save(task, function(res) {
-                    console.log(res);
                     self.tasks.push(res);
-                }, function(error) {
-                    console.log(error);
-                }).$promise;
+                }, function(error) {}).$promise;
             },
 
             delete: function(task) {
-                this.tasks.splice(this.tasks.indexOf(task), 1);
+                var self = this;
 
                 return this.api.delete({id: task.id}, function(res) {
-                    console.log(res);
-                }, function(error) {
-                    console.log(error);
-                }).$promise;
+                    self.tasks.splice(self.tasks.indexOf(task), 1);
+                }, function(error) {}).$promise;
             },
 
             toggle: function(task) {
@@ -65,12 +60,15 @@
                     return task.completed;
                 });
 
+                console.log(this.tasks);
+
                 angular.forEach(tasks, function(task) {
                     promises.push(self.delete(task));
                 });
 
                 $q.all(promises).then(function(res) {
                     console.log('FINISHED');
+                    console.log(self.tasks);
                 }, function(error) {
                     console.log(error);
                 });

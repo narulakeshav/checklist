@@ -13,7 +13,7 @@
 
     function MainController(store, tasksPrepService) {
         var vm = this;
-        vm.tasks = tasksPrepService;
+        vm.tasks = store.tasks = tasksPrepService;
 
         vm.addTask = function() {
             var newTask;
@@ -24,13 +24,11 @@
             };
 
             store.add(newTask).then(function(res) {
-                vm.tasks.push(res);
                 vm.newTask = '';
             });
         };
 
         vm.deleteTask = function(task) {
-            vm.tasks.splice(vm.tasks.indexOf(task), 1);
             store.delete(task);
         };
 
