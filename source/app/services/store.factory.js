@@ -52,13 +52,23 @@
             toggle: function(task) {
                 task.completed = !task.completed;
 
-                this.update(task);
+                return this.update(task);
             },
 
             mark: function(task) {
                 task.completed = true;
 
-                this.update(task);
+                return this.update(task);
+            },
+
+            markAll: function() {
+                var self = this, promises = [];
+
+                angular.forEach(self.tasks, function(task) {
+                    promises.push(self.mark(task));
+                });
+
+                return $q.all(promises);
             },
 
             clear: function() {
@@ -68,19 +78,11 @@
                     return task.completed;
                 });
 
-                console.log(this.tasks);
-
                 angular.forEach(tasks, function(task) {
                     promises.push(self.delete(task));
                 });
 
-                $q.all(promises).then(function(res) {
-                    console.log('FINISHED');
-                    console.log(self.tasks);
-                }, function(error) {
-                    console.log(error);
-                });
-
+                return $q.all(promises);
             },
 
             update: function(task) {

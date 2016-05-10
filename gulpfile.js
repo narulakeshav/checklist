@@ -10,6 +10,7 @@ var cleancss = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
 var ngAnnotate = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
+var imageop = require('gulp-image-optimization');
 
 var paths = {
     module: 'source/app/app.js',
@@ -25,7 +26,8 @@ var paths = {
         'node_modules/angular-resource/angular-resource.js',
         'node_modules/angular-animate/angular-animate.js'
     ],
-    fonts: ['node_modules/bootstrap-less/fonts/*', 'node_modules/font-awesome/fonts/*']
+    fonts: ['node_modules/bootstrap-less/fonts/*', 'node_modules/font-awesome/fonts/*'],
+    images: ['source/images/*.png', 'source/images/*.jpg', 'source/images/*.gif']
 };
 
 var dist = {
@@ -33,7 +35,8 @@ var dist = {
     scripts: 'dist/js/',
     styles: 'dist/styles/',
     views: 'dist/views/',
-    fonts: 'dist/fonts'
+    fonts: 'dist/fonts',
+    images: 'dist/images'
 };
 
 gulp.task('lint', function() {
@@ -95,6 +98,16 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest(dist.fonts));
 });
 
+gulp.task('images', function() {
+    gulp
+        .src(paths.images)
+        .pipe(imageop({
+            optimizationLevel: 5,
+            progressive: true
+        }))
+        .pipe(gulp.dest(dist.images));
+});
+
 gulp.task('watch', function() {
     gulp.watch(paths.index, ['htmlmin']);
     gulp.watch(paths.styles, ['less']);
@@ -102,4 +115,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.views, ['views']);
 });
 
-gulp.task('default', ['vendorScripts', 'fonts', 'lint', 'scripts', 'less', 'views', 'htmlmin', 'watch']);
+gulp.task('default', ['vendorScripts', 'images', 'fonts', 'lint', 'scripts', 'less', 'views', 'htmlmin', 'watch']);

@@ -13,7 +13,7 @@
 
     function config($stateProvider, $urlRouterProvider, $compileProvider) {
 
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/tasks');
 
         $stateProvider
             .state('tasks', {
@@ -22,8 +22,8 @@
                 controller: 'TaskController',
                 controllerAs: 'vm',
                 resolve: {
-                    tasksPrepService: tasksPrepService,
-                    authentication: authentication
+                    authentication: authentication,
+                    tasksPrepService: tasksPrepService
                 }
             })
             .state('login', {

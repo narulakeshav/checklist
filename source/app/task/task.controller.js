@@ -9,12 +9,13 @@
         .module('checklist')
         .controller('TaskController', TaskController);
 
-    TaskController.$inject = ['StoreFactory', 'tasksPrepService'];
+    TaskController.$inject = ['$scope', 'StoreFactory', 'tasksPrepService'];
 
-    function TaskController(StoreFactory, tasksPrepService) {
+    function TaskController($scope, StoreFactory, tasksPrepService) {
 
         var vm = this;
         vm.tasks = StoreFactory.tasks = tasksPrepService;
+        vm.pre = false;
 
         vm.addTask = function() {
             var newTask;
@@ -24,32 +25,38 @@
                 completed: false
             };
 
-            StoreFactory.add(newTask)
+            vm.preloader(StoreFactory.add, newTask)
                 .then(function() {
                     vm.newTask = '';
                 });
         };
 
         vm.deleteTask = function(task) {
-            StoreFactory.delete(task);
+            vm.preloader(StoreFactory.delete, task);
         };
 
         vm.markAll = function() {
-            angular.forEach(vm.tasks, function(task) {
-                StoreFactory.mark(task);
-            });
+            vm.preloader(StoreFactory.markAll);
         };
 
         vm.toggleTask = function(task) {
-            StoreFactory.toggle(task);
+            vm.preloader(StoreFactory.toggle, task);
         };
 
         vm.clearCompleted = function() {
-            StoreFactory.clear();
+            vm.preloader(StoreFactory.clear);
         };
 
         vm.update = function(task) {
-            StoreFactory.update(task);
+            vm.preloader(StoreFactory.update, task);
+        };
+
+        vm.preloader = function(action, arg) { 
+            vm.pre = true;
+
+            return action.call(StoreFactory, arg).then(function() {
+                vm.pre = false;
+            }); 
         };
 
     }

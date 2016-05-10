@@ -7,15 +7,15 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext);
 
 @mainfont: 'Roboto', sans-serif;
-@maincolor: #27ae60;
-@secondarycolor: #2ecc71;
+@maincolor: #0099e5;
+@secondarycolor: lighten(@maincolor, 5%);
 
 body {
   background: radial-gradient(circle, @secondarycolor, @maincolor);
   font-family: @mainfont;
   font-size: 16px;
   color: #666;
-  margin: 10px;
+  margin: 0;
 }
 
 * {
@@ -29,8 +29,69 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: darken(@maincolor, 20%);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+nav.primary {
+  background-color: darken(@maincolor, 2%);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+ul.menu {
+  li {
+    display: inline-block;
+    margin: 0 10px;
+
+    a {
+      display: block;
+      padding: 10px 15px;
+      transition: all 0.2s linear;
+
+      &:hover {
+        background-color: darken(@maincolor, 4%);
+        text-decoration: none;
+      }
+    } 
+  }
+}
+
 .main {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.09), 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  position: relative;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  opacity: 0.5;
+
+  > img {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: calc(~"50% - 25px");
+    left: calc(~"50% - 25px");
+  }
+
 }
 
 .buttons-ctr {

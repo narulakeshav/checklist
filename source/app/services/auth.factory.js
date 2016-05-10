@@ -15,15 +15,14 @@
 			login: function(user) {
 			    $http
 			      .post('http://localhost:8080/authenticate', user)
-			      .success(function (data, status, headers, config) {
+			      .then(function(data, status, headers, config) {
 			        $window.sessionStorage.token = data.token;
-			        $state.go('tasks');
+			        $state.go('tasks');			      	
 			        console.log('welcome');
-			      })
-			      .error(function (data, status, headers, config) {
+			      }, function(data, status, headers, config) {
 			        delete $window.sessionStorage.token;
-			        console.log('error: invalid user or password');
-			      });						
+			        console.log('error: invalid user or password');			      	
+			      });		
 			},
 
 			logout: function() {
