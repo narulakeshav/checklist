@@ -7,11 +7,11 @@
 
     angular
         .module('checklist')
-        .factory('store', store);
+        .factory('StoreFactory', StoreFactory);
 
-    store.$inject = ['$resource', '$q'];
+    StoreFactory.$inject = ['$resource', '$q'];
 
-    function store($resource, $q) {
+    function StoreFactory($resource, $q) {
 
         var data = {
 
@@ -28,17 +28,25 @@
             add: function(task) {
                 var self = this;
                 
-                return this.api.save(task, function(res) {
-                    self.tasks.push(res);
-                }, function(error) {}).$promise;
+                return this.api.save(task).$promise
+                    .then(function(res) {
+                        self.tasks.push(res);
+                    }, function(err) {
+                        console.log('an error has occured');
+                        console.log(err);
+                    });
             },
 
             delete: function(task) {
                 var self = this;
 
-                return this.api.delete({id: task.id}, function(res) {
-                    self.tasks.splice(self.tasks.indexOf(task), 1);
-                }, function(error) {}).$promise;
+                return this.api.delete({id: task.id}).$promise
+                    .then(function(res) {
+                        self.tasks.splice(self.tasks.indexOf(task), 1);
+                    }, function(err) {
+                        console.log('an error has occured');
+                        console.log(err);
+                    });
             },
 
             toggle: function(task) {

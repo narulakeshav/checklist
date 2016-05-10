@@ -9,27 +9,27 @@
         .module('checklist')
         .config(config);
 
-    config.$inject = ['$routeProvider', '$compileProvider'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider', '$compileProvider'];
 
-    function config($routeProvider, $compileProvider) {
+    function config($stateProvider, $urlRouterProvider, $compileProvider) {
 
-        $routeProvider
-            .when('/', {
+        $urlRouterProvider.otherwise('/login');
+
+        $stateProvider
+            .state('tasks', {
+                url: '/tasks',
                 templateUrl: 'views/task/task.html',
                 controller: 'TaskController',
                 controllerAs: 'vm',
                 resolve: {
-                    tasksPrepService: tasksPrepService
+                    tasksPrepService: tasksPrepService,
+                    authentication: authentication
                 }
             })
-            .when('/login', {
+            .state('login', {
+                url: '/login',
                 templateUrl: 'views/account/login.html',
                 controller: 'LoginController',
-                controllerAs: 'vm'
-            })
-            .otherwise('/', {
-                templateUrl: 'views/task/task.html',
-                controller: 'TaskController',
                 controllerAs: 'vm'
             });
 
@@ -37,8 +37,26 @@
 
     }
 
-    function tasksPrepService(store) {
-        return store.get();
+    tasksPrepService.$inject = ['StoreFactory'];
+
+    function tasksPrepService(StoreFactory) {
+        return StoreFactory.get();
+    }
+
+    authentication.$inject = ['$q', '$state', '$timeout', 'AuthFactory'];
+
+    function authentication($q, $state, $timeout, AuthFactory) {
+        var authenticated = AuthFactory.isAuthenticated();
+
+        if(authenticated) {
+            return $q.resolve();
+        } else {
+            $timeout(function() {
+                $state.go('login');
+            });
+
+            return $q.reject();
+        }
     }
 
 }());

@@ -6,11 +6,14 @@
 		.module('checklist')
 		.controller('LoginController', LoginController);
 
-	LoginController.$inject = ['$http', '$window'];
+	LoginController.$inject = ['$state', 'AuthFactory'];
 
-	function LoginController($http, $window) {
+	function LoginController($state, AuthFactory) {
 
 		var vm = this;
+
+		vm.auth = AuthFactory.isAuthenticated();
+		vm.message = (!vm.auth) ? 'Login' : 'You are already logged in';
 
 		vm.user = {
 			username: '',
@@ -18,15 +21,12 @@
 		};
 
 		vm.login = function(data) {
-		    $http
-		      .post('http://localhost:8080/authenticate', vm.user)
-		      .then(function (data, status, headers, config) {
-		        $window.sessionStorage.token = data.token;
-		        console.log('welcome');
-		      }, function (data, status, headers, config) {
-		        delete $window.sessionStorage.token;
-		        console.log('error: invalid user or password');
-		      });			
+			AuthFactory.login(data);			
+		};
+
+		vm.logout = function() {
+			AuthFactory.logout();
+			$state.go($state.current, {}, {reload: true});
 		};
 
 	}

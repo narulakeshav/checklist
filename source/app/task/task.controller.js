@@ -9,11 +9,12 @@
         .module('checklist')
         .controller('TaskController', TaskController);
 
-    TaskController.$inject = ['store', 'tasksPrepService'];
+    TaskController.$inject = ['StoreFactory', 'tasksPrepService'];
 
-    function TaskController(store, tasksPrepService) {
+    function TaskController(StoreFactory, tasksPrepService) {
+
         var vm = this;
-        vm.tasks = store.tasks = tasksPrepService;
+        vm.tasks = StoreFactory.tasks = tasksPrepService;
 
         vm.addTask = function() {
             var newTask;
@@ -23,35 +24,32 @@
                 completed: false
             };
 
-            store.add(newTask).then(function(res) {
-                vm.newTask = '';
-            });
+            StoreFactory.add(newTask)
+                .then(function() {
+                    vm.newTask = '';
+                });
         };
 
         vm.deleteTask = function(task) {
-            store.delete(task);
+            StoreFactory.delete(task);
         };
 
         vm.markAll = function() {
             angular.forEach(vm.tasks, function(task) {
-                store.mark(task);
+                StoreFactory.mark(task);
             });
         };
 
         vm.toggleTask = function(task) {
-            store.toggle(task);
+            StoreFactory.toggle(task);
         };
 
         vm.clearCompleted = function() {
-            store.clear();
+            StoreFactory.clear();
         };
 
         vm.update = function(task) {
-            store.update(task);
-        };
-
-        vm.editTask = function() {
-
+            StoreFactory.update(task);
         };
 
     }
