@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eskab/checklist.git"
+    "url": "git+https://github.com/eskab/MEAN-Todo-App.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eskab/checklist/issues"
+    "url": "https://github.com/eskab/MEAN-Todo-App/issues"
   },
-  "homepage": "https://github.com/eskab/checklist#readme",
+  "homepage": "https://github.com/eskab/MEAN-Todo-App#readme",
   "dependencies": {
     "angular": "^1.5.5",
     "angular-animate": "^1.5.5",
