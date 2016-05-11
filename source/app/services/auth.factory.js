@@ -14,8 +14,12 @@
 
 			login: function(user) {
 			    $http
-			      .post('http://localhost:8080/authenticate', user)
+			      .post('/api/authenticate', user)
 			      .then(function(data, status, headers, config) {
+			      	console.log(data);
+			      	console.log(status);
+			      	console.log(headers);
+			      	console.log(config);
 			        $window.sessionStorage.token = data.token;
 			        $state.go('tasks');			      	
 			        console.log('welcome');

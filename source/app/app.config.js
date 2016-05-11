@@ -9,11 +9,13 @@
         .module('checklist')
         .config(config);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider', '$compileProvider'];
+    config.$inject = ['$stateProvider', '$urlRouterProvider', '$compileProvider', '$locationProvider'];
 
-    function config($stateProvider, $urlRouterProvider, $compileProvider) {
+    function config($stateProvider, $urlRouterProvider, $compileProvider, $locationProvider) {
 
-        $urlRouterProvider.otherwise('/tasks');
+        $locationProvider.html5Mode(true);
+
+        $urlRouterProvider.otherwise('/login');
 
         $stateProvider
             .state('tasks', {

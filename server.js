@@ -8,29 +8,52 @@ var expressJwt = require('express-jwt'); //https://npmjs.org/package/express-jwt
 var secret = 'this is the secret secret secret 12356';
 
 var app = express();
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+var number = 0;
+var apinumber = 0;
 
 // We are going to protect /api routes with JWT
-app.use('/api', expressJwt({secret: secret}));
+// app.use('/api', expressJwt({secret: secret}));
 
 app.use(bodyParser.json());
-app.use('/', express.static(__dirname + '/'));
 
-app.use(function(err, req, res, next){
-  if (err.constructor.name === 'UnauthorizedError') {
-    res.status(401).send('Unauthorized');
-  }
+// Token authorization
+// if not sending 401
+// app.use(function(err, req, res, next){
+//   console.log('error')
+//   console.log(err);
+//   if (err.constructor.name === 'UnauthorizedError') {
+//     res.status(401).send('Unauthorized');
+//   }
+// });
+
+/*
+ * Main Router
+ */
+var router = express.Router();
+
+router.get(['/', '/login', '/tasks'], function(req, res) {
+  console.log('sending index ' + ++number);
+  res.sendFile('/dist/index.html', {root: __dirname});
 });
 
-app.post('/authenticate', function (req, res) {
+router.use('/images', express.static(__dirname + '/dist/images'));
+router.use('/fonts', express.static(__dirname + '/dist/fonts'));
+router.use('/js', express.static(__dirname + '/dist/js'));
+router.use('/styles', express.static(__dirname + '/dist/styles'));
+router.use('/views', express.static(__dirname + '/dist/views'));
+
+/*
+ * API Router
+ */
+apiRouter = express.Router();
+
+apiRouter.post('/authenticate', function(req, res) {
+  console.log('calling /api ' + ++apinumber);
   //TODO validate req.body.username and req.body.password
   //if is invalid, return 401
-  if (!(req.body.username === 'john.doe' && req.body.password === 'foobar')) {
+  console.log('api/authenticate request');
+  console.log(req.body);
+  if (!(req.body.username === 'admin' && req.body.password === '123')) {
     res.status(401).send('Wrong user or password');
     return;
   }
@@ -48,12 +71,15 @@ app.post('/authenticate', function (req, res) {
   res.json({ token: token });
 });
 
-app.get('/api/restricted', function (req, res) {
-  console.log('user ' + req.user.email + ' is calling /api/restricted');
-  res.json({
-    name: 'foo'
-  });
-});
+app.use('/', router);
+app.use('/api', apiRouter);
+
+// app.get('/api/restricted', function (req, res) {
+//   console.log('user ' + req.user.email + ' is calling /api/restricted');
+//   res.json({
+//     name: 'foo'
+//   });
+// });
 
 app.listen(8080, function () {
   console.log('listening on http://localhost:8080');
