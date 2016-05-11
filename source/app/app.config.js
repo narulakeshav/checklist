@@ -42,6 +42,7 @@
     tasksPrepService.$inject = ['StoreFactory'];
 
     function tasksPrepService(StoreFactory) {
+        console.log(StoreFactory.get());
         return StoreFactory.get();
     }
 

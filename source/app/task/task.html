@@ -16,10 +16,10 @@
                         <button class="mark-done" ng-click="vm.deleteTask(task)">Delete</button>
                     </div>
                     <div class="col-xs-12 col-md-9 col-lg-10">
-                        <span ng-show="!edit" ng-class="{completed: task.completed}" ng-click="edit = !edit">{{task.value}}</span>
+                        <span ng-show="!edit" ng-class="{completed: task.completed}" ng-click="edit = !edit">{{task.name}}</span>
     
                         <form class="edit-task" ng-show="edit" ng-submit="vm.update(task); edit = !edit">
-                            <input class="edit" type="text" ng-model="task.value">
+                            <input class="edit" type="text" ng-model="task.name">
                             <button class="mark-done">OK</button>
                         </form>
                     </div>

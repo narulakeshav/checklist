@@ -9,9 +9,9 @@
         .module('checklist')
         .controller('TaskController', TaskController);
 
-    TaskController.$inject = ['StoreFactory', 'tasksPrepService'];
+    TaskController.$inject = ['$http', 'StoreFactory', 'tasksPrepService'];
 
-    function TaskController(StoreFactory, tasksPrepService) {
+    function TaskController($http, StoreFactory, tasksPrepService) {
 
         var vm = this;
         vm.tasks = StoreFactory.tasks = tasksPrepService;
@@ -20,12 +20,22 @@
             var newTask;
 
             newTask = {
-                value: vm.newTask,
+                name: vm.newTask,
                 completed: false
             };
 
+            // $http
+            //     .post('/api/tasks', newTask)
+            //     .then(function(res) {
+            //         console.log('success');
+            //         console.log(res);
+            //     }, function(err) {
+            //         console.log('error');
+            //         console.log(err);
+            //     });
             StoreFactory.add(newTask)
-                .then(function() {
+                .then(function(data) {
+                    console.log(vm.tasks);
                     vm.newTask = '';
                 });
         };

@@ -1,4 +1,16 @@
-# Todo App
+# MEAN Todo App
 
-1. Todo:
-- server
+*Description incoming.*
+
+### Technologies used
+- Mongo
+- Express
+- Angular
+- Node
+
+### To do
+- server refactor
+- app style
+- instruction
+- gulp configuration
+- server configuration

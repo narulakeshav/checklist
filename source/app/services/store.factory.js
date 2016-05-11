@@ -17,8 +17,9 @@
 
             tasks: [],
 
-            api: $resource('http://localhost:3000/tasks/:id', null, {
-                update: { method: 'PUT' }
+            api: $resource('/api/tasks/:id', null, {
+                update: { method: 'PUT' },
+                save: { method: 'POST' }
             }),
 
             get: function() {
@@ -30,7 +31,8 @@
                 
                 return this.api.save(task).$promise
                     .then(function(res) {
-                        self.tasks.push(res);
+                        console.log(res);
+                        self.tasks.push(res.data);
                     }, function(err) {
                         console.log('an error has occured');
                         console.log(err);
@@ -40,7 +42,7 @@
             delete: function(task) {
                 var self = this;
 
-                return this.api.delete({id: task.id}).$promise
+                return this.api.delete({id: task._id}).$promise
                     .then(function(res) {
                         self.tasks.splice(self.tasks.indexOf(task), 1);
                     }, function(err) {
@@ -86,7 +88,8 @@
             },
 
             update: function(task) {
-                return this.api.update({id: task.id}, task).$promise;
+                console.log(task._id);
+                return this.api.update({id: task._id}, task).$promise;
             }
 
         };

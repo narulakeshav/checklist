@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp default",
-    "server": "json-server --watch db.json"
+    "server": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,8 @@
     "angular-resource": "^1.5.5",
     "angular-ui-router": "^0.2.18",
     "bootstrap-less": "^3.3.8",
-    "font-awesome": "^4.6.1"
+    "font-awesome": "^4.6.1",
+    "mongoose": "^4.4.16"
   },
   "devDependencies": {
     "body-parser": "^1.15.1",
@@ -40,7 +41,6 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.2",
-    "json-server": "^0.8.10",
     "jsonwebtoken": "^6.2.0"
   }
 }
