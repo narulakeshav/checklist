@@ -19,7 +19,7 @@
 
 			      	console.log(res);
 			        $window.sessionStorage.token = res.token;
-			      	// sets profile object to sessionStorage.user
+			      	// sets profile stringify object to sessionStorage.user
 			      	userProfile.set(res.data.user._id, res.data.user.name, res.data.user.email, res.data.user.password);
 
 			        $state.go('tasks');			      	

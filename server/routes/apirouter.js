@@ -29,13 +29,22 @@ router.post('/authenticate', function(req, res) {
       return;
     }
 
-    if (user.comparePassword(req.body.password)) {
+    user.comparePassword(req.body.password, function(err, isMatch) {
+      if (err) {
+        return res.status(401).send('Error');
+      }
+
+      if(!isMatch) {
+        return res.status(401).send('Wrong password'); 
+      }
+
+      console.log(req.body.password + ': ' + isMatch);
+
       var token = jwt.sign(user, secret, { expiresIn: '1h' });
 
       res.json({token: token, user: user});
-    } else {
-      res.status(401).send('Wrong password');
-    }
+
+    });
 
   });
 

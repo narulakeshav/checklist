@@ -27,6 +27,7 @@
     "mongoose": "^4.4.16"
   },
   "devDependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "express-jwt": "^3.4.0",
