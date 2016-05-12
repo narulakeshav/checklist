@@ -1,5 +1,6 @@
 var express = require('express');
 var Task = require('../models/task');
+var User = require('../models/user');
 
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
@@ -18,25 +19,76 @@ router.use('/restricted', expressJwt({secret: secret}));
 // Route /authenticate
 // ------------------------------------------
 router.post('/authenticate', function(req, res) {
-  //TODO validate req.body.username and req.body.password
-  //if is invalid, return 401
-  console.log('api/authenticate request');
-  if (!(req.body.username === 'admin' && req.body.password === '123')) {
-    res.status(401).send('Wrong user or password');
-    return;
-  }
 
-  var profile = {
-    first_name: 'admin',
-    email: 'admin@domain.com',
-    id: 1
-  };
+  User.findOne({name: req.body.username}, function(err, user) {
+    if (err) {
+      res.status(401).send('An error has occured');
+      return;
+    } else if (!user) {
+      res.status(401).send('There is no user in db');
+      return;
+    }
 
-  // We are sending the profile inside the token
-  var token = jwt.sign(profile, secret, { expiresIn: '1h' });
+    if (user.comparePassword(req.body.password)) {
+      var token = jwt.sign(user, secret, { expiresIn: '1h' });
 
-  res.json({ token: token });
+      res.json({token: token, user: user});
+    } else {
+      res.status(401).send('Wrong password');
+    }
+
+  });
+
 });
+
+// Route /users
+// ------------------------------------------
+router.route('/users')
+
+  .post(function(req, res) {
+
+    var user = new User();
+    user.name = req.body.name;
+    user.email = req.body.email;
+    user.password = req.body.password;
+
+    user.save(function(err) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json({message: 'Success', data: user});
+    });
+
+  })
+
+  .get(function(req, res) {
+
+    User.find(function(err, users) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json(users);
+    });
+
+  });
+
+// Route /users/:id
+// ------------------------------------------
+router.route('/users/:id')
+
+  .get(function(req, res) {
+
+    User.findById(req.params.id, function(err, user) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.json(user);
+    })
+
+  });
 
 // Route /tasks
 // ------------------------------------------

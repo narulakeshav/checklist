@@ -33,6 +33,21 @@
                 templateUrl: 'views/account/login.html',
                 controller: 'LoginController',
                 controllerAs: 'vm'
+            })
+            .state('register', {
+                url: '/register',
+                templateUrl: 'views/account/register.html',
+                controller: 'RegisterController',
+                controllerAs: 'vm'
+            })
+            .state('edit', {
+                url: '/edit',
+                templateUrl: 'views/user/user-edit.html',
+                controller: 'UserEditController',
+                controllerAs: 'vm',
+                resolve: {
+                    getProfile: getProfile
+                }
             });
 
         $compileProvider.debugInfoEnabled(false);
@@ -60,6 +75,12 @@
 
             return $q.reject();
         }
+    }
+
+    getProfile.$inject = ['userProfile'];
+
+    function getProfile(userProfile) {
+        return userProfile.get();
     }
 
 }());

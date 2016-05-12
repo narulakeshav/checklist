@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Register</h1>
+		</div>
+		<div class="col-xs-12">
+			<form class="vertical-form" ng-submit="vm.register()">
+				<div class="group">
+					<label for="name" class="hidden-xs col-sm-2">
+						Name:
+					</label>
+					<input class="col-xs-12 col-sm-10" type="text" id="name" ng-model="vm.user.name" placeholder="Name" required>
+				</div>
+				<div class="group">
+					<label for="email" class="hidden-xs col-sm-2">
+						Email:
+					</label>
+					<input class="col-xs-12 col-sm-10" id="email" type="email" ng-model="vm.user.email" placeholder="Email" required>
+				</div>				
+				<div class="group">
+					<label for="password" class="hidden-xs col-sm-2">
+						Password:
+					</label>
+					<input class="col-xs-12 col-sm-10" class="password" type="password" ng-model="vm.user.password" placeholder="Password" required>
+				</div>								
+				<div class="group">
+					<button type="submit" class="submit-button pull-right">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
