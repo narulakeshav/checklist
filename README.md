@@ -9,6 +9,7 @@
 - Node
 
 ### To do
+- password hash
 - server refactor
 - app style
 - instruction
