@@ -66,7 +66,7 @@ $(document).ready(function() {
             // CLEARS THE VALUE IN THE INPUT FIELD
             input.value = "";
         }
-    }
+    };
 
     // CREATES A NEW DONE BUTTON TO RIGHT OF TASK ITEM
     function createDoneButton(doneButton) {
