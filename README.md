@@ -1,6 +1,26 @@
 # MEAN Todo App
 
-*Description incoming.*
+To run the application you need MongoDB, Node and NPM installed.
+
+Clone this repository and type:
+
+```
+npm install
+```
+
+In server.js edit line:
+
+```
+var dbUrl = 'mongodb://localhost/taskbase';
+```
+to your mongodb url. Then run:
+
+```
+npm start
+npm run server
+```
+
+*Instruction and documentation in progress*
 
 ### Technologies used
 - Mongo
@@ -9,9 +29,9 @@
 - Node
 
 ### To do
-- password hash
+- ~~password hash~~(showing bcrypt)
 - server refactor
 - app style
-- instruction
+- instruction and documentation
 - gulp configuration
 - server configuration
