@@ -6,11 +6,14 @@
 		.module('checklist')
 		.controller('RegisterController', RegisterController);
 
-	RegisterController.$inject = ['UsersFactory'];
+	RegisterController.$inject = ['UsersFactory', 'AuthFactory'];
 
-	function RegisterController(UsersFactory) {
+	function RegisterController(UsersFactory, AuthFactory) {
 
 		var vm = this;
+
+		vm.auth = AuthFactory.isAuthenticated();
+		vm.message = (!vm.auth) ? 'Register' : 'You are already logged in';
 
 		vm.user = {
 			name: '',
@@ -25,6 +28,13 @@
 				.then(function(data) {
 					console.log('success');
 					console.log(data);
+
+					var loginData = {
+						username: vm.user.name,
+						password: vm.user.password
+					};
+
+					AuthFactory.login(loginData);
 				}, function(err) {
 					console.log('error');
 					console.log(err);

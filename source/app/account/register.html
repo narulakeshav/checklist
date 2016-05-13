@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12">
-			<h1>Register</h1>
+		<div class="col-xs-12 register">
+			<p>{{vm.message}}</p>
 		</div>
-		<div class="col-xs-12">
+		<div class="col-xs-12" ng-show="!vm.auth">
 			<form class="vertical-form" ng-submit="vm.register()">
 				<div class="group">
 					<label for="name" class="hidden-xs col-sm-2">

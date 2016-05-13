@@ -46,6 +46,7 @@
                 controller: 'UserEditController',
                 controllerAs: 'vm',
                 resolve: {
+                    authentication: authentication,
                     getProfile: getProfile
                 }
             });

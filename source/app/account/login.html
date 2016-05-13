@@ -1,11 +1,13 @@
 <div class="container">
 	<div class="row">
-		<p>{{vm.message}}</p>
-		<a href="" ng-show="vm.auth" ng-click="vm.logout()">Wyloguj</a>
-		<form ng-submit="vm.login(vm.user)" ng-show="!vm.auth">
-			<input type="text" ng-model="vm.user.username" autofocus required>
-			<input type="password" ng-model="vm.user.password" required>
-			<button class="submit-button" type="submit">Submit</button>
-		</form>
+		<div class="col-xs-12 login">
+			<p>{{vm.message}}</p>
+			<a href="" ng-show="vm.auth" ng-click="vm.logout()">Wyloguj</a>
+			<form ng-submit="vm.login(vm.user)" ng-show="!vm.auth">
+				<input type="text" ng-model="vm.user.username" autofocus required>
+				<input type="password" ng-model="vm.user.password" required>
+				<button class="submit-button" type="submit">Submit</button>
+			</form>
+		</div>
 	</div>
 </div>

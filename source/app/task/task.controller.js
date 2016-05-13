@@ -23,16 +23,7 @@
                 name: vm.newTask,
                 completed: false
             };
-
-            // $http
-            //     .post('/api/tasks', newTask)
-            //     .then(function(res) {
-            //         console.log('success');
-            //         console.log(res);
-            //     }, function(err) {
-            //         console.log('error');
-            //         console.log(err);
-            //     });
+            
             StoreFactory.add(newTask)
                 .then(function(data) {
                     console.log(vm.tasks);
