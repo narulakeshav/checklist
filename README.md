@@ -8,17 +8,18 @@ Clone this repository and type:
 npm install
 ```
 
-In server.js edit line:
+In config.js change url to your MongoDB url in line:
 
 ```
-var dbUrl = 'mongodb://localhost/taskbase';
+url: 'mongodb://localhost/taskbase',
 ```
-to your mongodb url. Then run:
+
+Then type:
 
 ```
 npm start
-npm run server
 ```
+You need MongoDB running to start application.
 
 *Instruction and documentation in progress*
 

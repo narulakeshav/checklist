@@ -14,20 +14,20 @@
 
 			login: function(user) {
 			    $http
-			      .post('/api/authenticate', user)
-			      .then(function(res) {
+			        .post('/api/authenticate', user)
+			        .then(function(res) {
 
-			      	console.log(res);
-			        $window.sessionStorage.token = res.token;
-			      	// sets profile stringify object to sessionStorage.user
-			      	userProfile.set(res.data.user._id, res.data.user.name, res.data.user.email, res.data.user.password);
+			      		console.log(res);
+			        	$window.sessionStorage.token = res.token;
+			      		// sets profile stringify object to sessionStorage.user
+			      		userProfile.set(res.data.user._id, res.data.user.name, res.data.user.email, res.data.user.password);
 
-			        $state.go('tasks');			      	
+			        	$state.go('tasks');			      	
 
-			      }, function(data) {
-			        delete $window.sessionStorage.token;
-			        delete $window.sessionStorage.user;
-			      });		
+			        }, function(data) {
+			        	delete $window.sessionStorage.token;
+			        	delete $window.sessionStorage.user;
+			        });		
 			},
 
 			logout: function() {

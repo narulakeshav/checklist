@@ -4,8 +4,8 @@ var config = require('./config');
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var apiRouter = require('./app/routes/apirouter');
-var mainRouter = require('./app/routes/mainrouter');
+var apiRouter = require('./server/routes/apirouter');
+var mainRouter = require('./server/routes/mainrouter');
 
 var connection = mongoose.connect(config.url);
 
