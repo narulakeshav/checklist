@@ -4,6 +4,7 @@
   "description": "Angular checklist",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npm install",
     "start": "node server.js"
   },
   "repository": {
@@ -17,19 +18,20 @@
   },
   "homepage": "https://github.com/eskab/MEAN-Todo-App#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
     "angular": "^1.5.5",
     "angular-animate": "^1.5.5",
     "angular-resource": "^1.5.5",
     "angular-ui-router": "^0.2.18",
     "bootstrap-less": "^3.3.8",
     "font-awesome": "^4.6.1",
-    "mongoose": "^4.4.16"
+    "mongoose": "^4.4.16",
+    "jsonwebtoken": "^6.2.0"
   },
   "devDependencies": {
-    "bcrypt-nodejs": "0.0.3",
-    "body-parser": "^1.15.1",
-    "express": "^4.13.4",
-    "express-jwt": "^3.4.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.7",
     "gulp-concat": "^2.6.0",
@@ -41,6 +43,5 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.2",
-    "jsonwebtoken": "^6.2.0"
   }
 }
